@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPY // GAME</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="home-page">
+
+<div class="app">
+
+    <!-- START -->
+    <section class="screen active" id="startScreen">
+
+        <div class="logo">
+            <div class="small">WELCOME TO</div>
+            <h1>Imposter<span>.</span></h1>
+        </div>
+
+
+
+
+<div class="players-box">
+
+    <button class="btn-1">3</button>
+    <button class="btn-2">4</button>
+    <button class="btn-3">5</button>
+    <button class="btn-4">6</button>
+    <button class="btn-5">7</button>
+
+    <button class="btn-6">8</button>
+    <button class="btn-7">9</button>
+    <button class="btn-8">10</button>
+    <button class="btn-9">11</button>
+    <button class="btn-10">12</button>
+
+</div>
+
+
+<!-- PLAYER NAMES -->
+<div id="playerNames" class="player-names"></div>
+
+<!-- NUMBER OF SPIES -->
+<div class="information spy-settings">
+    <div>
+        <h2 id="spyCountDisplay">1</h2>
+        <p>Imposters</p>
+
+        <button type="button" id="spyMinus">−</button>
+        <button type="button" id="spyPlus">+</button>
+    </div>
+</div>
+
+
+
+<!-- CATEGORY SELECTION -->
+<section class="setup-options">
+    <div class="setup-heading">
+        <span>01</span>
+        <div>
+            <h2>Choose Your World</h2>
+            <p>اختار التصنيف اللي هتلعبوا فيه</p>
+        </div>
+    </div>
+
+    <div class="category-grid" id="categoryGrid">
+        <button type="button" class="category-option selected"
+                data-category="food">
+            <span>🍔</span>
+            <strong>أكلات</strong>
+            <small>Food</small>
+        </button>
+
+        <button type="button" class="category-option"
+                data-category="cartoon">
+            <span>🎭</span>
+            <strong>كرتون</strong>
+            <small>Cartoons</small>
+        </button>
+
+        <button type="button" class="category-option"
+                data-category="animals">
+            <span>🐼</span>
+            <strong>حيوانات</strong>
+            <small>Animals</small>
+        </button>
+
+        <button type="button" class="category-option"
+                data-category="football">
+            <span>⚽</span>
+            <strong>كرة القدم</strong>
+            <small>Football</small>
+        </button>
+
+        <button type="button" class="category-option"
+                data-category="movies">
+            <span>🎬</span>
+            <strong>أفلام</strong>
+            <small>Movies</small>
+        </button>
+
+        <button type="button" class="category-option"
+                data-category="random">
+            <span>🎲</span>
+            <strong>عشوائي</strong>
+            <small>Random</small>
+        </button>
+    </div>
+
+    <div class="setup-heading mode-heading">
+        <span>02</span>
+        <div>
+            <h2>Spy Mode</h2>
+            <p>اختاروا طريقة اللعب</p>
+        </div>
+    </div>
+
+    <div class="mode-grid" id="modeGrid">
+        <button type="button" class="mode-option selected"
+                data-mode="classic">
+            <span class="mode-icon">🕵️</span>
+            <strong>الإمبوستر المجهول</strong>
+            <p>الإمبوستر يعرف دوره، لكنه لا يعرف الكلمة السرية، ويحاول اكتشافها من كلام اللاعبين.</p>
+        </button>
+
+        <button type="button" class="mode-option"
+                data-mode="misleading">
+            <span class="mode-icon">🧩</span>
+            <strong>المعلومة المختلفة</strong>
+            <p>الإمبوستر يعرف دوره ويحصل على كلمة مختلفة أو تلميح خاص بدل كلمة اللاعبين.</p>
+        </button>
+    </div>
+</section>
+
+
+
+<div class="information">
+    <div>
+        <h2 id="playersCount">0</h2>
+        <p>Players</p>
+    </div>
+
+    <div>
+        <h2 id="impostersCount">1</h2>
+        <p>Imposter</p>
+    </div>
+
+    <div>
+        <h2>4:00</h2>
+        <p>Time</p>
+    </div>
+</div>
+<button onclick="startGameWithSettings()" class="start-btn">
+    START GAME
+</button>
+<script src="script.js"></script>
+
+</body>
+</html>

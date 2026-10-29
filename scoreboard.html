@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard | SPY GAME</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .score-page {
+            width: min(750px, 92%);
+            margin: 40px auto;
+            color: white;
+            text-align: center;
+        }
+        .score-page h1 span { color: #ff7a1a; }
+        .score-panel {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 25px;
+        }
+        .score-row {
+            display: grid;
+            grid-template-columns: 45px minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            text-align: left;
+            background: #1b1b1b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .rank, .points { color: #ff7a1a; font-weight: bold; }
+        .player-name { overflow-wrap: anywhere; }
+        .score-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .score-actions button {
+            padding: 13px 18px;
+            border: 1px solid #ff7a1a;
+            border-radius: 8px;
+            background: #ff7a1a;
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .score-actions button:hover {
+            background: transparent;
+            color: #ff7a1a;
+        }
+        @media (max-width: 420px) {
+            .score-row { grid-template-columns: 32px minmax(0, 1fr); }
+            .points { grid-column: 2; }
+        }
+    </style>
+</head>
+<body class="game-page">
+
+<main class="score-page">
+    <p style="color:#ff7a1a;letter-spacing:4px;">SPY // GAME</p>
+    <h1>PLAYER <span>SCORES</span></h1>
+    <p>Leaderboard</p>
+
+    <section class="score-panel">
+        <div id="scoreList"></div>
+    </section>
+
+    <div class="score-actions">
+        <button id="backBtn">← BACK TO REVEAL</button>
+        <button id="playAgainBtn">PLAY AGAIN</button>
+        <button id="homeBtn">BACK TO HOME</button>
+    </div>
+</main>
+
+<script>
+let scores = {};
+let names = {};
+
+try {
+    scores = JSON.parse(localStorage.getItem("spyGameScores") || "{}");
+    names = JSON.parse(localStorage.getItem("spyGamePlayerNames") || "{}");
+} catch {
+    scores = {};
+    names = {};
+}
+
+const scoreList = document.getElementById("scoreList");
+
+const players = Object.keys(scores).map(key => ({
+    name: names[key] || key,
+    score: Number(scores[key]) || 0
+}));
+
+players.sort((a, b) => b.score - a.score);
+
+if (players.length === 0) {
+    scoreList.textContent = "No points yet. Play a round first!";
+} else {
+    players.forEach((player, index) => {
+        const row = document.createElement("div");
+        row.className = "score-row";
+
+        const rank = document.createElement("span");
+        rank.className = "rank";
+        rank.textContent = "#" + (index + 1);
+
+        const name = document.createElement("span");
+        name.className = "player-name";
+        name.textContent = player.name;
+
+        const points = document.createElement("span");
+        points.className = "points";
+        points.textContent = player.score + " PTS";
+
+        row.append(rank, name, points);
+        scoreList.appendChild(row);
+    });
+}
+
+document.getElementById("backBtn").onclick = () => {
+    location.href = "imposter.html";
+};
+
+document.getElementById("playAgainBtn").onclick = () => {
+    location.href = "game.html?newRound=" + Date.now();
+};
+
+document.getElementById("homeBtn").onclick = () => {
+    localStorage.removeItem("spyGameScores");
+    localStorage.removeItem("spyGamePlayerNames");
+    location.href = "index.html";
+};
+</script>
+
+</body>
+</html>

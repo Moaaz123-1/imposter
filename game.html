@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+
+
+<div id="timer">04:00</div>
+
+<div class="game">
+    <p id="playerNumber">PLAYER 1</p>
+
+    <div class="card" id="card">
+        <div id="hiddenSide">
+            🔒
+            <h2>TAP TO REVEAL</h2>
+        </div>
+
+        <div id="roleSide" style="display: none;">
+            <h2 id="role"></h2>
+            <p id="location"></p>
+        </div>
+    </div>
+
+    <button id="nextBtn" style="display: none;">
+        HIDE & PASS →
+    </button>
+
+
+<button id="voteBtn" style="display: none;">
+    VOTE
+</button>
+
+<div id="voteScreen" style="display: none;">
+    <h2>WHO IS THE Imposter?</h2>
+
+    <p id="voterNumber"></p>
+
+    <div id="playersVote"></div>
+
+        <button id="playAgainBtn" class="play-again-btn" style="display: none;">
+    PLAY AGAIN
+</button>
+
+<button id="homeBtn"
+    onclick="localStorage.removeItem('spyGameScores'); window.location.href='index.html'">
+    BACK TO HOME
+</button>
+</div>
+</div>
+
+
+
+</a>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
